@@ -4932,7 +4932,7 @@ a.close.disabled {
 }
 @media (min-width: 576px) {
     .modal-dialog {
-        max-width: 500px;
+        max-width: 800px;
         margin: 1.75rem auto;
     }
     .modal-dialog-scrollable {
@@ -9731,7 +9731,7 @@ body.sidebar-main .iq-top-navbar {
     text-decoration: none;
 }
 .iq-navbar-logo img {
-    height: 25px;
+    height: 40px;
 }
 .iq-sub-dropdown.iq-sub-dropdown-large {
     width: 500px;
