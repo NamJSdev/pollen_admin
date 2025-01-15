@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\BeMatController;
 use App\Http\Controllers\BoController;
 use App\Http\Controllers\ChiController;
@@ -9,6 +10,17 @@ use App\Http\Controllers\HoController;
 use App\Http\Controllers\KhauDoController;
 use App\Http\Controllers\PhanController;
 use Illuminate\Support\Facades\Route;
+
+//Lấy list tài khoản quản trị hệ thống
+Route::get('/tai-khoan-he-thong', [AccountController::class, 'getSupperAdminAccount'])->name('SupperAdminList');
+//Lấy list tài khoản nhân viên
+Route::get('/tai-khoan-quan-tri', [AccountController::class, 'getAdminAccount'])->name('AdminList');
+// Tao tai khoan
+Route::post('/tao-tai-khoan', [AccountController::class, 'createAccount'])->name('CreateAccount');
+// Sua tai khoan
+Route::post('/sua-tai-khoan', [AccountController::class, 'updateAccount'])->name('UpdateAccount');
+// Xoa tai khoan
+Route::post('/xoa-tai-khoan', [AccountController::class, 'deleteAccount'])->name('DeleteAccount');
 
 //Loai hoa routes
 Route::get('/', [HoaController::class, 'getList'])->name('flowers');

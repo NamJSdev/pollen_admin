@@ -102,7 +102,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="">
+                <li class="{{ request()->is('tai-khoan-he-thong') || request()->is('tai-khoan-quan-tri') ? 'active' : '' }}">
                     <a href="#people" class="collapsed" data-toggle="collapse" aria-expanded="false">
                         <svg class="svg-icon" id="p-dash8" width="20" height="20"
                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -123,13 +123,13 @@
                     <ul id="people"
                         class="iq-submenu collapse"
                         data-parent="#iq-sidebar-toggle">
-                        <li class="">
-                            <a href="">
+                        <li class="{{ request()->is('tai-khoan-quan-tri') ? 'active' : '' }}">
+                            <a href="{{ route('AdminList') }}">
                                 <i class="las la-minus"></i><span>TK Quản Trị</span>
                             </a>
                         </li>
-                        <li class="">
-                            <a href="">
+                        <li class="{{ request()->is('tai-khoan-he-thong') ? 'active' : '' }}">
+                            <a href="{{ route('SupperAdminList') }}">
                                 <i class="las la-minus"></i><span>Tài Khoản Hệ Thống</span>
                             </a>
                         </li>
