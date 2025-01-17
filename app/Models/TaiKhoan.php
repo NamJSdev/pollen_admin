@@ -24,10 +24,10 @@ class TaiKhoan extends Authenticatable
         'password',
         'remember_token',
     ];
-    public function setMatKhauAttribute($value)
-    {
-        $this->attributes['matKhau'] = Hash::make($value);
-    }
+    // public function setMatKhauAttribute($value)
+    // {
+    //     $this->attributes['matKhau'] = Hash::make($value);
+    // }
 
     public function role()
     {

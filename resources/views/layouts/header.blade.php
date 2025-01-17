@@ -31,10 +31,10 @@
                                                 class="rounded profile-img img-fluid avatar-70" />
                                         </div>
                                         <div class="p-3">
-                                            <h5 class="mb-1"></h5>
-                                            <p class="mb-0"></p>
+                                            <h5 class="mb-1">{{ Auth::user()->email }}</h5>
+                                            <p class="mb-0">{{ getGreeting() }} {{ Auth::user()->info->ten }}</p>
                                             <div class="d-flex align-items-center justify-content-center mt-3">
-                                                <form method="POST" action="">
+                                                <form method="POST" action="{{ route('logout') }}">
                                                     @csrf
                                                     <button type="submit" class="dropdown-item border"
                                                         href="#" data-toggle="modal"

@@ -117,7 +117,7 @@
                         </div>
                         <div class="form-group">
                             <label>Mật Khẩu Mới</label>
-                            <input type="text" class="form-control" name="mauKhau">
+                            <input type="text" class="form-control" name="matKhau">
                         </div>
                     </div>
                     <div class="modal-footer">

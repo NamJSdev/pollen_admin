@@ -38,7 +38,7 @@ class AccountController extends Controller
         // Create a new record in the 'accounts' table
         $account = TaiKhoan::create([
             'email' => $request->input('email'),
-            'matKhau' => bcrypt($request->input('password')),
+            'matKhau' => bcrypt($request->input('matKhau')),
             'quyenID' => $request->input('role'),
             'thongTinTaiKhoanID' => $info->id,
         ]);
@@ -59,21 +59,18 @@ class AccountController extends Controller
             'email' => 'required|string|max:255|email',
             'matKhau' => 'nullable|string|min:6',
         ]);
-        
-        // dd($request->id);
         // Find the account by ID
         $account = TaiKhoan::find($request->id);
         if (!$account) {
             return redirect()->back()->with('error', 'Account not found.');
         }
-    
-        // Update the account details
-        $account->email = $request->email;
-        if($request->matKhau != ""){
+
+        // Update mật khẩu nếu có thay đổi
+        if (!empty($request->matKhau)) {
             $account->matKhau = bcrypt($request->matKhau);
         }
         $account->save();
-    
+
         // Update the info details
         $info = Info::find($account->thongTinTaiKhoanID);
         if ($info) {
@@ -83,7 +80,7 @@ class AccountController extends Controller
         } else {
             return redirect()->back()->with('error', 'Associated info not found.');
         }
-    
+
         if ($account->quyenID == 1) {
             return redirect()->route('SupperAdminList')->with('success', 'Tài khoản đã được cập nhật thành công.');
         } else {
@@ -96,7 +93,12 @@ class AccountController extends Controller
             'id' => 'required|integer',
         ]);
         $role = TaiKhoan::find($request->id)->quyenID;
+        $infoID = TaiKhoan::find($request->id)->thongTinTaiKhoanID;
         TaiKhoan::destroy($request->id);
+        // Nếu tồn tại thông tin tài khoản thì xóa luôn
+        if ($infoID) {
+            Info::destroy($infoID);
+        }
         if ($role == 1) {
             return redirect()->route('SupperAdminList')->with('success', 'Tài khoản đã được xóa thành công.');
         } else {
