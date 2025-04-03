@@ -1,6 +1,6 @@
 <div class="iq-top-navbar">
     <div class="iq-navbar-custom">
-        <nav style="" class="navbar navbar-expand-lg navbar-light p-0">
+        <nav class="navbar navbar-expand-lg navbar-light p-0">
             <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
                 <i class="ri-menu-line wrapper-menu"></i>
                 <a href="{{ route('flowers') }}" class="header-logo">

@@ -9,8 +9,23 @@
                     <div>
                         <h4 class="mb-3">Danh Sách Loài Hoa</h4>
                     </div>
-                    <a href="" class="btn btn-primary add-list" data-toggle="modal" data-target="#createModal"><i
-                            class="las la-plus"></i>Thêm Mới Loài Hoa</a>
+                    <div class="iq-search-bar device-search w-50 d-flex flex-wrap justify-content-end">
+                        <form id="searchForm" action="{{route('flowers')}}" method="GET"
+                            class="searchbox d-flex">
+                            <div>
+                                <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+                                <input type="text" id="searchInput"
+                                    style="border-top-right-radius: 0%;border-bottom-right-radius: 0%;"
+                                    class="text search-input" title="Tìm kiếm theo tên hoặc tên khoa học" placeholder="Tìm kiếm hoa..." name="search"
+                                    value="" />
+                            </div>
+                            <button type="submit" class="btn btn-info float-left"
+                                style="border-top-left-radius: 0%;border-bottom-left-radius: 0%;">Tìm
+                                Kiếm</button>
+                        </form>
+                        <a href="" class="btn btn-primary add-list" data-toggle="modal" data-target="#createModal"><i
+                                class="las la-plus"></i>Thêm Mới Loài Hoa</a>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-12">
@@ -57,6 +72,8 @@
                                                 data-kich_thuoc="{{ $data->kichThuoc }}"
                                                 data-dac_diem="{{ $data->dacDiem }}"
                                                 data-be_mat="{{ $data->beMat ? $data->beMat->ten : 'Không có thông tin' }}"
+                                                data-bo="{{ $data->chi->ho->bo ? $data->chi->ho->bo->ten : 'Không có thông tin' }}"
+                                                data-ho="{{ $data->chi->ho ? $data->chi->ho->ten : 'Không có thông tin' }}"
                                                 data-chi="{{ $data->chi ? $data->chi->ten : 'Không có thông tin' }}"
                                                 data-phan="{{ $data->phan ? $data->phan->ten : 'Không có thông tin' }}"
                                                 data-khau_do="{{ $data->khauDo ? $data->khauDo->ten : 'Không có thông tin' }}"
@@ -108,12 +125,15 @@
                                 <p class="mb-2">Tên Khoa Học : <span id="ten_kh"></span></p>
                                 <p class="mb-2">Kích Thước : <span id="kich_thuoc"></span></p>
                                 <hr>
-                                <p class="mb-2">Đặc Điểm : <span id="dac_diem"></span></p>
-                                <p class="mb-0">Bề Mặt : <span id="be_mat"></span></p>
-                                <hr>
+                                <p class="mb-2">Bộ : <span id="bo"></span></p>
+                                <p class="mb-2">Họ : <span id="ho"></span></p>
                                 <p class="mb-2">Chi : <span id="chi"></span></p>
+                                <hr>
+                                <p class="mb-0">Bề Mặt : <span id="be_mat"></span></p>
                                 <p class="mb-2">Phần : <span id="phan"></span></p>
                                 <p class="mb-0">Khẩu Độ : <span id="khau_do"></span></p>
+                                <hr>
+                                <p class="mb-2">Hình dạng phấn hoa : <span id="dac_diem"></span></p>
                                 <hr>
                                 <p class="mb-0">Model Training : <span id="model"></span></p>
                             </div>
@@ -377,6 +397,8 @@
                 var kich_thuoc = button.data('kich_thuoc');
                 var dac_diem = button.data('dac_diem');
                 var be_mat = button.data('be_mat');
+                var bo = button.data('bo');
+                var ho = button.data('ho');
                 var chi = button.data('chi');
                 var phan = button.data('phan');
                 var khau_do = button.data('khau_do');
@@ -388,6 +410,8 @@
                 $('#viewModal #kich_thuoc').text(kich_thuoc);
                 $('#viewModal #dac_diem').text(dac_diem);
                 $('#viewModal #be_mat').text(be_mat);
+                $('#viewModal #bo').text(bo);
+                $('#viewModal #ho').text(ho);
                 $('#viewModal #chi').text(chi);
                 $('#viewModal #phan').text(phan);
                 $('#viewModal #khau_do').text(khau_do);
@@ -401,6 +425,8 @@
                 $('#viewModal #kich_thuoc').text(kich_thuoc);
                 $('#viewModal #dac_diem').text(dac_diem);
                 $('#viewModal #be_mat').text(be_mat);
+                $('#viewModal #bo').text(bo);
+                $('#viewModal #ho').text(ho);
                 $('#viewModal #chi').text(chi);
                 $('#viewModal #phan').text(phan);
                 $('#viewModal #khau_do').text(khau_do);

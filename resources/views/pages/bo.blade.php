@@ -136,7 +136,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <p>Bạn có chắc chắn muốn xóa bộ này?</p>
+                        <p>Xóa bộ thì họ và chi trong bộ cũng sẽ bị xóa, bạn có chắc chắn muốn xóa bộ này?</p>
                         <input type="hidden" name="id" id="delete-id">
                     </div>
                     <div class="modal-footer">

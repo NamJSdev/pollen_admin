@@ -30,7 +30,13 @@ class HoaController extends Controller
             'model'
         ])
             ->orderBy('id', 'desc');
-
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where(function ($query) use ($search) {
+                $query->where('ten', 'LIKE', "%{$search}%")
+                    ->orWhere('tenKhoaHoc', 'LIKE', "%{$search}%");
+            });
+        }
         $datas = $query->paginate(10);
         return view('pages.index', compact('datas', 'chi_datas', 'be_mat_datas', 'phan_datas', 'khau_do_datas', 'model_datas'));
     }
@@ -158,7 +164,7 @@ class HoaController extends Controller
                     Storage::delete('public/' . str_replace(asset('storage/'), '', $url));
                 }
             }
-        $anhPhanHoaUrls=null;
+            $anhPhanHoaUrls = null;
             foreach ($request->file('anh_phan_hoa') as $file) {
                 if ($file->isValid()) {
                     try {
